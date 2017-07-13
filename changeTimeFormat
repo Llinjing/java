@@ -1,0 +1,17 @@
+    /**
+     * 将string 类型的时间转换为long类型
+     * @param time string类型时间
+     * @return long类型时间
+     */
+    public long getLongTime(String time, String dateFormat) {
+        long timestamp = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+        Date date;
+        try {
+            date = sdf.parse(time);
+            timestamp = date.getTime() / 1000;
+        } catch (ParseException e) {
+            logger.error("get timestamp error", e);
+        }
+        return timestamp;
+    }
